@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Get Key</title>
+  <style>
+    body {
+      background:#0f0f0f;
+      color:white;
+      font-family:sans-serif;
+      text-align:center;
+      padding-top:100px;
+    }
+    .box {
+      background:#1a1a1a;
+      padding:30px;
+      width:320px;
+      margin:auto;
+      border-radius:10px;
+    }
+    .key {
+      margin-top:15px;
+      font-size:18px;
+      color:#4caf50;
+      word-break:break-all;
+    }
+  </style>
+</head>
+<body>
+
+<div class="box">
+  <h2 id="title">Access denied</h2>
+  <p id="status">You are not allowed to view this page.</p>
+  <div class="key" id="key"></div>
+</div>
+
+<script>
+  const params = new URLSearchParams(window.location.search);
+  const passed = params.get("passed");
+  const token  = params.get("token");
+
+  // token ที่คุณตั้งเอง
+  const SECRET_TOKEN = "KAMI-ACCESS";
+
+  if (passed === "1" && token === SECRET_TOKEN) {
+    const key =
+      "KEY-" +
+      Math.random().toString(36).substring(2, 6).toUpperCase() +
+      "-" +
+      Math.random().toString(36).substring(2, 6).toUpperCase();
+
+    document.getElementById("title").innerText = "Your Key";
+    document.getElementById("status").innerText = "dAguM32nqVtYKMhVAzOkSpFIV";
+    document.getElementById("key").innerText = key;
+  }
+</script>
+
+</body>
+</html>

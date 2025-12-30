@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Get Key</title>
+
+  <!-- LINKVERTISE -->
+  <script src="https://publisher.linkvertise.com/cdn/linkvertise.js"></script>
+  <script>
+    linkvertise(1409379, { whitelist: [], blacklist: [""] });
+  </script>
+
+  <style>
+    body {
+      background:#0f0f0f;
+      color:white;
+      font-family:sans-serif;
+      text-align:center;
+      padding-top:80px;
+    }
+    .box {
+      background:#1a1a1a;
+      padding:30px;
+      width:320px;
+      margin:auto;
+      border-radius:10px;
+    }
+    button {
+      background:#4caf50;
+      border:none;
+      padding:12px 20px;
+      color:white;
+      font-size:16px;
+      border-radius:6px;
+      cursor:pointer;
+    }
+    #key {
+      margin-top:15px;
+      word-break: break-all;
+      color:#4caf50;
+    }
+  </style>
+</head>
+<body>
+
+<div class="box">
+  <h2>Get Key</h2>
+  <p>Click the button below to get your key</p>
+  <button onclick="goLinkvertise()">Get Key</button>
+  <p id="key"></p>
+</div>
+
+<script>
+function goLinkvertise() {
+  // สุ่ม token ทุกครั้ง
+  const token = Math.random().toString(36).substring(2);
+  window.location.href = "https://linkvertise.com/1409379?token=" + token;
+}
+
+// เช็คว่าผ่าน Linkvertise แล้วหรือยัง
+const params = new URLSearchParams(window.location.search);
+if (params.get("passed") === "1") {
+  // สุ่มคีย์
+  const key = "KEY-" + Math.random().toString(36).substring(2, 10).toUpperCase();
+  document.getElementById("key").innerText = key;
+}
+</script>
+
+</body>
+</html>
